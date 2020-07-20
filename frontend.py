@@ -8,12 +8,12 @@ def main():
     app = LoginWindow(root)
     root.mainloop()
 class LoginWindow:
-    def __init__(self, master):
-        self.master = master
-        self.master.title("Fitness Tracker")
-        self.master.geometry('1350x750+0+0')
-        self.master.config(bg='skyblue2')
-        self.frame = Frame(self.master, bg='skyblue2')
+    def __init__(self, main):
+        self.main = main
+        self.main.title("Fitness Tracker")
+        self.main.geometry('1350x750+0+0')
+        self.main.config(bg='skyblue2')
+        self.frame = Frame(self.main, bg='skyblue2')
         self.frame.pack()
         # self.userName = StringVar()
         # self.pw = StringVar()
@@ -40,17 +40,17 @@ class LoginWindow:
         self.Exitbtn = Button(self.frame2, text='Exit', width=10, bg='skyblue2', command=self.appExit)
         self.Exitbtn.grid(row=3, column=0, pady=20, padx=20)
     def toMainWindow(self):
-        self.toMainWindow = Toplevel(self.master)
+        self.toMainWindow = Toplevel(self.main)
         self.app = MainWindow(self.toMainWindow)
     def appExit(self):
-        self.master.destroy()
+        self.main.destroy()
 class MainWindow:
-    def __init__(self, master):
-        self.master = master
-        self.master.title("User Records System")
-        self.master.geometry('1350x750+0+0')
-        self.master.config(bg='skyblue2')
-        self.frame = Frame(self.master, bg='skyblue2')
+    def __init__(self, main):
+        self.main = main
+        self.main.title("User Records System")
+        self.main.geometry('1350x750+0+0')
+        self.main.config(bg='skyblue2')
+        self.frame = Frame(self.main, bg='skyblue2')
         self.frame.pack()
         self.frame2 = LabelFrame(self.frame, width=1350, height=600, font=('arial', 20, 'bold'), relief='ridge',
                                  bg='skyblue2', bd=20)
@@ -122,20 +122,20 @@ class MainWindow:
         self.e3.delete(0, END)
         self.e4.delete(0, END)
     def toSearchWindow(self):
-        self.toSearchWindow = Toplevel(self.master)
+        self.toSearchWindow = Toplevel(self.main)
         self.app = searchRecordWindow(self.toSearchWindow)
     def toViewAllRecords(self):
-        self.toViewAllRecords = Toplevel(self.master)
+        self.toViewAllRecords = Toplevel(self.main)
         self.app = viewAllRecords(self.toViewAllRecords)
     def appExit(self):
-        self.master.destroy()
+        self.main.destroy()
 class searchRecordWindow:
-    def __init__(self, master):
-        self.master = master
-        self.master.title("User Records System")
-        self.master.geometry('1350x750+0+0')
-        self.master.config(bg='skyblue2')
-        self.frame = Frame(self.master, bg='skyblue2')
+    def __init__(self, main):
+        self.main = main
+        self.main.title("User Records System")
+        self.main.geometry('1350x750+0+0')
+        self.main.config(bg='skyblue2')
+        self.frame = Frame(self.main, bg='skyblue2')
         self.frame.pack()
         self.label_Title = Label(self.frame, text='Search User', font=('arial', 50, 'bold'), bg='skyblue2',
                                  fg='black')
@@ -166,14 +166,14 @@ class searchRecordWindow:
         self.exitBtn = Button(self.frame2, text="Exit", width=12, bg='skyblue2', command=self.appExit)
         self.exitBtn.grid(row=6, column=2, padx=30, pady=20)
     def appExit(self):
-        self.master.destroy()
+        self.main.destroy()
 class viewAllRecords:
-    def __init__(self, master):
-        self.master = master
-        self.master.title("All Records")
-        self.master.geometry('1350x750+0+0')
-        self.master.config(bg='skyblue2')
-        self.frame = Frame(self.master, bg='skyblue2')
+    def __init__(self, main):
+        self.main = main
+        self.main.title("All Records")
+        self.main.geometry('1350x750+0+0')
+        self.main.config(bg='skyblue2')
+        self.frame = Frame(self.main, bg='skyblue2')
         self.frame.pack()
         self.label_Title = Label(self.frame, text='Records', font=('arial', 50, 'bold'), bg='skyblue2',
                                  fg='black')
@@ -192,6 +192,6 @@ class viewAllRecords:
                                    command=lambda: backend.exportCSV())
         self.exportCSVBtn.grid(row=8, column=3, padx=20, pady=20)
     def appExit(self):
-        self.master.destroy()
+        self.main.destroy()
 if __name__ == '__main__':
     main()
